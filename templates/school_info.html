@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Registration Form</title>
+        <style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+  }
+  label {
+    font-weight: bold;
+  }
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+    </head>
+    <body>
+
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport"
+                    content="width=device-width, initial-scale=1.0">
+                <title>User Registration Form</title>
+                <style>
+      /* Your CSS styles here */
+    </style>
+            </head>
+            <body>
+
+                <div class="container">
+                    <h2>User Registration</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" id="education_type" name="education_type" value="">
+                        <label for="firstname">First Name:</label>
+                        <input type="text" id="firstname" name="firstname"
+                            required>
+
+                        <label for="lastname">Last Name:</label>
+                        <input type="text" id="lastname" name="lastname"
+                            required>
+
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username"
+                            required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" required>
+
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" id="dob" name="dob" required>
+                        <div>
+                            <button type="button"
+                                onclick="selectEducation('school')"
+                                name="school">School</button>
+                            <button type="button"
+                                onclick="selectEducation('college')"
+                                name="college">College</button>
+                            <button type="button"
+                                onclick="selectEducation('institute')"
+                                name="institute">Institute</button>
+                        </div>
+
+                        <label for="category">Category:</label>
+                        <select name="" id=""></select>
+                        <select id="category" name="category"
+                            onchange="showFields()">
+                            <option value disabled selected>Select Category</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="schoolpage">School Page</option>
+                        </select>
+
+                        <div id="studentFields" style="display: none;">
+                            <label for="class">Class:</label>
+                            <input type="text" id="class" name="class">
+
+                            <label for="school">School:</label>
+                            <input type="text" id="school" name="school">
+                        </div>  
+
+                        <div id="teacherFields" style="display: none;">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject">
+
+                            <label for="experience">Experience:</label>
+                            <input type="text" id="experience" name="experience">
+                        </div>
+
+                        <div id="schoolFields" style="display: none;">
+                            <label for="founderYear">Founder Year:</label>
+                            <input type="text" id="founderYear"
+                                name="founderYear">
+
+                            <label for="schoolName">School:</label>
+                            <input type="text" id="schoolName" name="schoolName">
+                        </div>
+
+                        <label for="education">Education:</label>
+
+                        <div id="educationFields" style="display: none;">
+                            <label for="educationName">Name:</label>
+                            <input type="text" id="educationName"
+                                name="educationNa me">
+
+                            <label for="educationLocation">Location:</label>
+                            <input type="text" id="educationLocation"
+                                name="educationLocation">
+                        </div>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </body>
+        </html>
+
+        <script>
+            function selectEducation(educationType) {
+                document.getElementById('education_type').value = educationType;
+                showFields();
+        }
+            function showFields() {
+                var category = document.getElementById("category").value;
+                var studentFields = document.getElementById("studentFields");
+                var teacherFields = document.getElementById("teacherFields");
+                var schoolFields = document.getElementById("schoolFields");
+    
+                studentFields.style.display = "none";
+                teacherFields.style.display = "none";
+                schoolFields.style.display = "none";
+    
+                if (category === "student") {
+                    studentFields.style.display = "block";
+                } else if (category === "teacher") {
+                    teacherFields.style.display = "block";
+                } else if (category === "schoolpage") {
+                    schoolFields.style.display = "block";
+                }
+            }
+ </script>
